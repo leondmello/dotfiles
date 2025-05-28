@@ -104,6 +104,9 @@ source $ZSH/oh-my-zsh.sh
 set -o vi
 bindkey "^R" history-incremental-search-backward
 
+# https://buildpacks.io/docs/for-app-developers/how-to/special-cases/build-on-podman/#connection
+export DOCKER_HOST="unix://$(podman info -f "{{.Host.RemoteSocket.Path}}")"
+
 export PATH="$HOME/.rbenv/bin:/usr/local/go/bin:$PATH"
 eval "$(rbenv init -)"
 
